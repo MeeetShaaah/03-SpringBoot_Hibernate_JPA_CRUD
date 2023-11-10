@@ -26,7 +26,7 @@ public class Student {
     @Column(name = "email")
     private String email;
 
-    //Define Consttuctor
+    //Define Constructor
     public Student(){}
 
     public Student(String firstName, String lastName, String email) {

@@ -20,39 +20,78 @@ public class CruddemoApplication {
 		
 		return runner->{
 			//createStudent(studentDAO);
-			createMultipleStudents(studentDAO);
+			//createMultipleStudents(studentDAO);
+
+			readStudent(studentDAO);
 		};
 	}
 
-	private void createMultipleStudents(StudentDAO studentDAO){
+	// private void createStudent(StudentDAO studentDAO){
+	// 	//create the student object
+	// 	System.out.println("Creating new student Object....");
+	// 	Student tempStudent = new Student("Meet", "Shah", "meetshah.sr@gmail.com");
+		
+	// 	//save the student object
+	// 	System.out.println("Saving the student....");
+	// 	studentDAO.save(tempStudent);
+		
+	// 	//display id of the saved student
+	// 	System.out.println("New student created with ID: "+tempStudent.getId());
+	// }
+
+	// private void createMultipleStudents(StudentDAO studentDAO){
+	// 	//creating multiple student objects
+	// 	System.out.println("Creating three new students.....");
+	// 	Student tempStudent1 = new Student("Meet", "Shah", "meetshah.sr@gmail.com");
+	// 	Student tempStudent2 = new Student("Prexu", "Shah", "prexushah.sr@gmail.com");
+	// 	Student tempStudent3 = new Student("Kunj", "Shah", "kunjshah.sr@gmail.com");
+
+	// 	//save the student object
+	// 	System.out.println("Saving the students....");
+	// 	studentDAO.save(tempStudent1);
+	// 	studentDAO.save(tempStudent2);
+	// 	studentDAO.save(tempStudent3);
+
+	// 	//display id of the saved student
+	// 	System.out.println("New student created with ID: "+tempStudent1.getId());
+	// 	System.out.println("New student created with ID: "+tempStudent2.getId());
+	// 	System.out.println("New student created with ID: "+tempStudent3.getId());
+	// }
+
+	 private void readStudent(StudentDAO studentDAO){
 		//creating multiple student objects
 		System.out.println("Creating three new students.....");
 		Student tempStudent1 = new Student("Meet", "Shah", "meetshah.sr@gmail.com");
 		Student tempStudent2 = new Student("Prexu", "Shah", "prexushah.sr@gmail.com");
 		Student tempStudent3 = new Student("Kunj", "Shah", "kunjshah.sr@gmail.com");
-
+		
 		//save the student object
 		System.out.println("Saving the students....");
 		studentDAO.save(tempStudent1);
 		studentDAO.save(tempStudent2);
 		studentDAO.save(tempStudent3);
 
-		//display id of the saved student
-		System.out.println("New student created with ID: "+tempStudent1.getId());
-		System.out.println("New student created with ID: "+tempStudent2.getId());
-		System.out.println("New student created with ID: "+tempStudent3.getId());
-	}
+		//Display Id of the saved student
+		int theId1= tempStudent1.getId();
+		int theId2= tempStudent2.getId();
+		int theId3= tempStudent3.getId();
+		System.out.println("Saved student with generated ID: " + theId1);
+		System.out.println("Saved student with generated ID: " + theId2);
+		System.out.println("Saved student with generated ID: " + theId3);
 
-	private void createStudent(StudentDAO studentDAO){
-		//create the student object
-		System.out.println("Creating new student Object....");
-		Student tempStudent = new Student("Meet", "Shah", "meetshah.sr@gmail.com");
-		
-		//save the student object
-		System.out.println("Saving the student....");
-		studentDAO.save(tempStudent);
-		
-		//display id of the saved student
-		System.out.println("New student created with ID: "+tempStudent.getId());
-	}
+		//retrive the student baased on id: primary key
+		System.out.println("Retriving the student by id " + theId1);
+		Student retrievedStudent1 = studentDAO.findById(theId1);
+
+		System.out.println("Retriving the student by id " + theId2);
+		Student retrievedStudent2 = studentDAO.findById(theId2);
+
+		System.out.println("Retriving the student by id " + theId3);
+		Student retrievedStudent3 = studentDAO.findById(theId3);
+
+		//Display Student
+		System.out.println("Student 1:" + retrievedStudent1);
+		System.out.println("Student 2:" + retrievedStudent2);
+		System.out.println("Student 3:" + retrievedStudent3);
+	 }
 }
